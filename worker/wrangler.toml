@@ -1,0 +1,7 @@
+name = "worker"
+main = "src/index.ts"
+compatibility_date = "2023-05-02"
+
+route = "localhost/api/*"
+
+vars.env = "dev"

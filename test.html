@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File Upload Test</title>
+  </head>
+  <body>
+    <h1>File Upload Test</h1>
+    <form id="uploadForm">
+      <input type="file" id="fileInput" name="file" />
+      <button type="submit">Upload</button>
+    </form>
+
+    <script>
+      document.getElementById('uploadForm').addEventListener('submit', function (event) 
+      {
+        event.preventDefault();
+        
+        var fileInput = document.getElementById('fileInput');
+        var file = fileInput.files[0];
+
+        var formData = new FormData();
+        formData.append('file', file);
+
+        fetch('http://127.0.0.1:8081/', {method:'POST', body:formData}).then(response => 
+        {
+            if (response.ok) alert('File uploaded successfully.');
+            else alert('Error uploading file.');
+        }).catch(error => 
+        {
+            console.error('Error:', error);
+        });
+      });
+    </script>
+  </body>
+</html>
